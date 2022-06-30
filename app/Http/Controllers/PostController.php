@@ -21,7 +21,7 @@ class PostController extends Controller
     public function show(Post $post){
         # code
         return view('posts.show', [
-            'post'=>$post
+            'post'=>$post->load(['category', 'author', 'comments'])
         ]);
     }
 }
