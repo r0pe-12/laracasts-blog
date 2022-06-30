@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
     ];
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function posts(){
         # code
         return $this->hasMany(Post::class);
+    }
+
+    public function setPasswordAttribute($password){
+        # code
+        $this->attributes['password'] = bcrypt($password);
     }
 }
